@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wirst du dich erinnern?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Wirst du dich erinnern?</h1>
+    <p>Erstelle dein eigenes Augen-Memory: Augen fotografieren, zuschneiden, Kartenpaare erzeugen und ausdrucken.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>1. Auge fotografieren</h2>
+      <video id="video" autoplay playsinline></video>
+      <div class="controls">
+        <button id="startCamera">Kamera starten</button>
+        <button id="capture">Foto aufnehmen</button>
+        <label class="fileBtn">
+          Bild hochladen
+          <input id="upload" type="file" accept="image/*" hidden>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>2. Zuschnitt wählen</h2>
+      <p class="hint">Ziehe den Regler, bis das Auge gut im Quadrat sitzt.</p>
+      <canvas id="cropCanvas" width="700" height="700"></canvas>
+      <div class="sliders">
+        <label>Zoom <input id="zoom" type="range" min="1" max="3" step="0.01" value="1"></label>
+        <label>X <input id="posX" type="range" min="-100" max="100" step="1" value="0"></label>
+        <label>Y <input id="posY" type="range" min="-100" max="100" step="1" value="0"></label>
+      </div>
+      <button id="addCard">Auge als Memory-Paar hinzufügen</button>
+    </section>
+
+    <section class="panel">
+      <h2>3. Memory-Karten</h2>
+      <p class="hint">Jedes Auge wird automatisch als Paar angelegt. Zum Drucken: „Druckansicht öffnen“.</p>
+      <div id="cards" class="cards"></div>
+      <div class="controls">
+        <button id="shuffle">Mischen</button>
+        <button id="print">Druckansicht öffnen</button>
+        <button id="clear">Alles löschen</button>
+      </div>
+    </section>
+  </main>
+
+  <template id="cardTemplate">
+    <div class="card">
+      <img alt="Augenkarte">
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
